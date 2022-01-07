@@ -24,4 +24,14 @@ from .models import Course
 #         finally:
 #             cursor.close()
 
-from rest_framework.test import APITestCase
+from django.test import TestCase
+from .models import *
+from rest_framework import reverse
+from rest_framework import status
+class StudentsDetailsViewTest(TestCase):
+    def test_query_search(self):
+        query_set = StudentDetails.objects.raw('SELECT * FROM collegedetails.college_studentdetails LIMIT 3;')
+        url = (reverse('Student_Details', args=(query_set)))
+        response=self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
