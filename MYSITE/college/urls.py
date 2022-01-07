@@ -20,6 +20,8 @@ router.register(r'marks', views.MarksViewSet)
 urlpatterns=[
            path('', include(router.urls)),
            # path('student',schema_view),
+           path('marks', views.MarksView.as_view(), name='marks'),
+           path('student',views.StudentView.as_view(), name='student_details')
 
 
 ]
