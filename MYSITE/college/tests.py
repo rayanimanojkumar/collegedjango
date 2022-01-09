@@ -1,9 +1,46 @@
+
+from rest_framework.test import APITestCase
+from rest_framework.reverse import reverse
+from rest_framework import status
+
+
+USER_URL = reverse('student_api:auth')
+class StudentsDetailsTestCase(APITestCase):
+
+    def test_login_user(self):
+        self.assertTrue(self.client.login(username='manoj', password='abc123'))
+        response = self.client.get(USER_URL)
+        self.assertEqual(response.status_code,status.HTTP_200_OK)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # from django.test import TestCase
 # from django.db import connection
-#
-# # Create your tests here.
-#
-from .models import Course
+
+
+# from .models import Course
 # def test_custom_query(self):
 #
 # class ModelTests(TestCase):
@@ -24,14 +61,15 @@ from .models import Course
 #         finally:
 #             cursor.close()
 
-from django.test import TestCase
-from .models import *
-from rest_framework import reverse
-from rest_framework import status
-class StudentsDetailsViewTest(TestCase):
-    def test_query_search(self):
-        query_set = StudentDetails.objects.raw('SELECT * FROM collegedetails.college_studentdetails LIMIT 3;')
-        url = (reverse('Student_Details', args=(query_set)))
-        response=self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+# from django.test import TestCase
+# from .models import *
+# from rest_framework import reverse
+# from rest_framework import status
+# class StudentsDetailsViewTest(TestCase):
+#     def test_query_search(self):
+#         query_set = StudentDetails.objects.raw('SELECT * FROM collegedetails.college_studentdetails LIMIT 3;')
+#         url = (reverse('Student_Details', args=(query_set)))
+#         response=self.client.get(url)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
