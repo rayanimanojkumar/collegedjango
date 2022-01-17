@@ -4,6 +4,7 @@ from rest_framework.reverse import reverse
 from rest_framework import status
 
 
+# STUDENT_URL = reverse('student_api:marks')
 USER_URL = reverse('student_api:auth')
 class StudentsDetailsTestCase(APITestCase):
 
@@ -14,6 +15,9 @@ class StudentsDetailsTestCase(APITestCase):
 
 
 
+#    def test_details(self):
+    #     response = self.client.get(STUDENT_URL, format='json')
+    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
 
